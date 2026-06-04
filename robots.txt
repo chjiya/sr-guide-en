@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://chjiya.github.io/hsr-guide-en/sitemap.xml
