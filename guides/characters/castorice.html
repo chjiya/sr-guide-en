@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/sr-guide-en/">
+    <meta name="description" content="Community-verified Castorice guide for HSR 3.4. Quantum Remembrance DPS build, Dragon companion mechanics, HP manipulation, best relics, light cones, and team compositions.">
+    <meta name="keywords" content="Castorice guide v3.4, Castorice build HSR, Quantum Remembrance, Castorice relics, Castorice light cone, Pollux dragon, HP manipulation HSR">
+    <title>Castorice Guide v3.4: Remembrance DPS Build, Team & FAQ | HSR Guide</title>
+    <link rel="stylesheet" href="/sr-guide-en/css/style.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Castorice Guide v3.4: Remembrance DPS Build, Team & FAQ | HSR Guide","dateModified":"2026-06-18","datePublished":"2026-06-18","description":"Community-verified Castorice guide for HSR 3.4. Quantum Remembrance DPS build, Dragon companion mechanics, HP manipulation, best relics, light cones, and team compositions."}</script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Is Castorice good in Honkai Star Rail?","acceptedAnswer":{"@type":"Answer","text":"Yes — Castorice is a top-tier Quantum Remembrance DPS with unique HP-manipulation mechanics. Her companion dragon Pollux deals devastating AoE Quantum damage, and her self-damaging playstyle enables powerful synergies with HP-scaling supports and healers. She is among the strongest DPS characters in v3.4."}},
+      {"@type":"Question","name":"What is Pollux, Castorice's dragon companion?","acceptedAnswer":{"@type":"Answer","text":"Pollux is Castorice's memosprite companion summoned via her Skill. Pollux has its own HP pool, action bar, and attacks. It drains HP from both Castorice and allies to empower its breath attacks. When Pollux's bond meter is full, it performs a devastating ultimate attack that consumes HP for massive Quantum AoE damage."}},
+      {"@type":"Question","name":"How does Castorice's HP manipulation work?","acceptedAnswer":{"@type":"Answer","text":"Castorice converts a portion of her own and her allies' current HP into Pollux's power. Her Skill and Ultimate both cost HP instead of or alongside Energy. Pollux's attacks deal bonus damage based on HP drained during the current battle. This creates a high-risk, high-reward playstyle where lower team HP = more damage, requiring careful healer management."}},
+      {"@type":"Question","name":"What light cone is best for Castorice?","acceptedAnswer":{"@type":"Answer","text":"'Golden Wing of the Abyss' is Castorice's signature best-in-slot, providing CRIT DMG% and HP% synergy with bonus damage when HP changes. 'A Grounded Ascent' (Remembrance BP light cone) is a strong secondary option. For F2P, 'The Long Night of Oaths' (3-star Remembrance) and 'Indelible Promise' are excellent budget picks."}},
+      {"@type":"Question","name":"What team does Castorice want?","acceptedAnswer":{"@type":"Answer","text":"Castorice + Sunday + Luocha + Ruan Mei is her premium team. Sunday provides energy and turn advance for both Castorice and Pollux. Luocha's massive healing keeps the team alive through HP drain. For budget: Castorice + Jingliu + Lynx + Tingyun capitalizes on the dual-HP-drain archetype."}}
+    ]}</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4B26RL1D24"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4B26RL1D24');</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3857626678274044" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header"><div class="container"><a href="/sr-guide-en/" class="logo">🚂 HSR Guide</a><nav><a href="/sr-guide-en/guides/">Guides</a><a href="/sr-guide-en/guides/characters/">Characters</a><a href="/sr-guide-en/guides/bosses/">Bosses</a><a href="/sr-guide-en/guides/lightcones/">Light Cones</a><a href="/sr-guide-en/tier-list.html">Tier List</a><a href="/sr-guide-en/news/">News</a></nav></div></header>
+<main class="container"><nav class="breadcrumb"><a href="/sr-guide-en/">Home</a> &raquo; <a href="/sr-guide-en/guides/characters/">Characters</a> &raquo; Castorice</nav><article>
+<span class="version-badge">📌 Version 3.4</span><span class="update-date">Updated June 18, 2026</span>
+<h1>Castorice Guide — Quantum Remembrance DPS (v3.4)</h1>
+<div class="article-meta">Quantum · Remembrance · T0 HP-Manipulation DPS</div>
+
+<div class="amazon-affiliate" style="background:#1a1a2e;padding:1rem;border-radius:8px;margin:1.5rem 0;border:1px solid #333;text-align:center">
+  <p style="color:#ffd700;margin-bottom:0.5rem">🎮 Level Up Your Gaming Setup</p>
+  <p style="font-size:0.9rem;color:#ccc">High-performance peripherals for Honkai Star Rail and other RPGs.</p>
+  <a href="https://www.amazon.com/dp/B0CJ3GF8R8?tag=zhonghong20-20" target="_blank" rel="nofollow sponsored" style="display:inline-block;background:#ffd700;color:#1a1a2e;padding:0.5rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:bold;margin-top:0.5rem">🛒 Shop Gaming Mice on Amazon</a>
+</div>
+
+<h2>TL;DR</h2>
+<p>Castorice is a 5-star Quantum Remembrance DPS who summons a dragon companion named Pollux. She is a high-risk, high-reward character whose entire kit revolves around HP manipulation — draining her own and her allies' health to empower Pollux's devastating attacks. The more HP she drains over the course of battle, the harder she hits. She requires a dedicated healer to manage her team's health, but the payoff is some of the highest Quantum AoE damage in the game. Castorice is a premiere v3.4 DPS for MoC and endgame content.</p>
+
+<h2>Core Mechanics</h2>
+
+<h3>Pollux — Dragon Companion (Memosprite)</h3>
+<p>Castorice's Skill summons Pollux, her dragon memosprite companion. Pollux has its own HP bar, action value, and turn order — it acts independently on its own turn. Pollux's Basic Attack deals Quantum damage to a single enemy, while its enhanced Skill drains HP from both Castorice and her teammates to fuel a powerful AoE breath attack. Pollux accumulates a Bond Meter as it attacks and as HP is drained; when the Bond Meter is full, Pollux uses its Ultimate ability — a massive AoE Quantum nuke that consumes all stored HP debt for bonus damage. Pollux remains on field until its HP reaches 0 or Castorice uses her own Ultimate.</p>
+
+<h3>HP Drain &amp; Blood Debt</h3>
+<p>Castorice's Skill and Ultimate both cost a percentage of her current HP rather than Energy. Pollux's enhanced abilities also drain HP from the entire team. This drained HP accumulates as Blood Debt, a hidden resource that Castorice tracks. The more Blood Debt stored during battle, the higher the damage multipliers on Castorice's Ultimate and Pollux's Bond attack. At low HP thresholds (below 35%), Castorice gains significant damage bonuses and extended Pollux uptime. This creates a fascinating risk/reward dynamic where low health is actually optimal for damage output.</p>
+
+<h3>Healer Synergy</h3>
+<p>Because Castorice constantly drains her team's HP, she has an absolute requirement for a strong sustain unit. However, she also benefits from healing more than most DPS — certain supports trigger additional effects when healing a low-HP ally, and Castorice's own kit has passives that convert overhealing into temporary ATK buffs. Luocha is her premier healer due to his automatic field-healing, but abundance units with strong single-target heals also work well.</p>
+
+<h2>Best Light Cones</h2>
+<table>
+  <tr><th>Rank</th><th>Light Cone</th><th>Notes</th></tr>
+  <tr><td>S</td><td>Golden Wing of the Abyss</td><td>Signature — CRIT DMG%, HP% scaling, bonus DMG on HP change. Perfectly tailored to her mechanic.</td></tr>
+  <tr><td>A</td><td>A Grounded Ascent</td><td>Battle Pass — HP%, CRIT Rate, and DMG buff when HP is consumed.</td></tr>
+  <tr><td>B</td><td>The Long Night of Oaths</td><td>3-star Remembrance — HP% bonus and DMG% at low HP. Surprising F2P value.</td></tr>
+  <tr><td>B</td><td>Indelible Promise</td><td>4-star — ATK% and Energy Regeneration. Budget option for smoother rotations.</td></tr>
+</table>
+
+<h2>Best Relics &amp; Planars</h2>
+<table>
+  <tr><th>Set</th><th>Why It Works</th></tr>
+  <tr><td>4pc Longevous Disciple</td><td>Best-in-slot — HP% and CRIT Rate when HP changes. Procs constantly from Castorice's self-damage.</td></tr>
+  <tr><td>4pc Genius of Brilliant Stars</td><td>Strong alternative — Quantum DMG% and DEF ignore. Better for mono-Quantum teams.</td></tr>
+  <tr><td>2pc Longevous + 2pc Messenger</td><td>Budget hybrid — HP% + SPD for faster rotations.</td></tr>
+  <tr><td>Bone Collection's Serene</td><td>Best Planar — HP% and CRIT DMG% above 95% max HP. Synergizes with her self-healing passives.</td></tr>
+  <tr><td>Fleet of the Ageless</td><td>Alternative Planar — HP% and team ATK buff at 120+ SPD.</td></tr>
+</table>
+
+<h3>Stat Priority</h3>
+<ul>
+  <li><strong>Body:</strong> CRIT Rate or CRIT DMG (aim for 1:2 ratio, prioritize CRIT Rate from Longevous)</li>
+  <li><strong>Boots:</strong> SPD (essential — Castorice and Pollux both benefit from faster turns)</li>
+  <li><strong>Orb:</strong> HP% (her damage scales with max HP, not ATK)</li>
+  <li><strong>Rope:</strong> HP% (more HP = more self-damage capacity = more Blood Debt = more damage)</li>
+  <li><strong>Substats:</strong> CRIT Rate / CRIT DMG > HP% > SPD (after 134 breakpoint)</li>
+  <li><strong>Target:</strong> 70%+ CRIT Rate, 150%+ CRIT DMG, 8000+ HP, 134+ SPD</li>
+</ul>
+
+<h2>Best Team Compositions</h2>
+
+<h3>Premium HP-Synergy: Castorice + Sunday + Luocha + Ruan Mei</h3>
+<p>Castorice's strongest and most consistent team. Sunday provides energy regeneration and turn advance for both Castorice and Pollux — this is critical because faster Pollux turns mean faster Bond Meter generation. Luocha's auto-healing field is the perfect sustain for constant HP drain; he keeps the team at safe HP levels without consuming SP. Ruan Mei buffs team damage, extends Break duration, and provides RES PEN. This team has no downtime and maximizes Castorice's damage ceiling.</p>
+
+<h3>Hypercarry: Castorice + Bronya + Tingyun + Huohuo</h3>
+<p>Bronya advances Castorice for more frequent Skill uses and Pollux summons, while Tingyun provides ATK and Energy. Huohuo offers heals plus team Energy regeneration, which helps Castorice get her Ultimate back faster for refreshing Pollux. This team produces enormous single-target pressure and works well in boss-fight scenarios.</p>
+
+<h3>Dual Drain: Castorice + Jingliu + Luocha + Pela</h3>
+<p>An aggressive team that doubles down on HP-manipulation. Jingliu also drains ally HP (from her teammates' HP pool) to enter her enhanced state, creating a team-wide low-HP synergy. Luocha's healing output is stretched thin but still sufficient with proper gearing. Pela provides DEF shred that benefits both Quantum and Ice damage. This is a glass-cannon composition that clears waves extremely fast.</p>
+
+<h3>Budget: Castorice + Lynx + Tingyun + Pela</h3>
+<p>Accessible and functional. Lynx provides SP-positive healing with cleanse, which helps manage Castorice's HP drain. Tingyun boosts Castorice's energy, and Pela offers universal DEF shred. This team lacks the premium support damage amplification but can clear MoC floors comfortably with proper gearing.</p>
+
+<h2>Eidolons &amp; Resonance</h2>
+<ul>
+  <li><strong>E1:</strong> Pollux gains 20% Action Advance when taking damage. Much faster Bond generation.</li>
+  <li><strong>E2:</strong> Castorice's Blood Debt cap increases by 50%, allowing her to store more HP for bigger nukes.</li>
+  <li><strong>E4:</strong> Heals received by the team are converted to a stacking ATK buff. Excellent synergy with overhealing.</li>
+  <li><strong>E6:</strong> Pollux's Bond attack no longer costs team HP, and its base damage is doubled. Transformative power spike.</li>
+</ul>
+
+<h2>Rotation Tips</h2>
+<p>Opener: Castorice Skill → Summon Pollux → Pollux acts (Basic or Skill depending on enemy count). The goal is to drain HP as quickly as possible to build Blood Debt. Use Castorice's Ultimate when Pollux's Bond Meter is at least 80% full, because her Ultimate deals bonus damage proportional to Pollux's bond level. Keep Castorice below 50% HP if possible for her passive damage bonuses — but never let her fall so low that one enemy hit will kill her. Use Luocha's field or Huohuo's Ultimate proactively before Pollux's Bond attack to ensure the team survives the HP drain. In multi-wave content, pre-stack Blood Debt on the last enemy of a wave before finishing it off so you start the next wave with a loaded Bond Meter.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Does Castorice need Energy?</h3>
+<p>Castorice does not use Energy for her Skill — it's HP-gated instead. However, her Ultimate still requires Energy to activate, so Energy Regeneration% from substats or supports like Tingyun/Huohuo is beneficial. Sunday's energy battery is particularly valuable for keeping both Castorice and Pollux operating at full capacity.</p>
+
+<h3>How much HP should Castorice have?</h3>
+<p>Aim for 8000+ total HP after gear. Her damage scales with max HP, every piece of her kit references HP percentages, and higher HP gives her a larger buffer for HP drain without requiring as frequent healing. HP% substats are roughly as valuable as CRIT substats for her total damage output.</p>
+
+<h3>Is Luocha mandatory for Castorice?</h3>
+<p>Not mandatory, but strongly recommended. Luocha's auto-field healing is uniquely suited to her playstyle because it fires without consuming SP and reacts to team-wide HP drain immediately. Huohuo, Gallagher, and Lynx are viable alternatives, but you will need to manage SP more carefully. Bailu works in a pinch for pure healing output.</p>
+
+<h3>Does Castorice work with Sunday?</h3>
+<p>Yes — Sunday is arguably Castorice's best support. His turn advance works on both Castorice and Pollux (since Pollux is a memosprite), his energy regeneration feeds her Ultimate, and his CRIT DMG buff is always welcome. Sunday + Castorice is one of the strongest DPS-support duos in v3.4.</p>
+
+<h3>What happens when Pollux dies?</h3>
+<p>If Pollux's HP reaches 0, it is banished from the field. Castorice must use her Skill again to resummon it, which costs an additional HP drain. This is a significant rotation loss, so keeping Pollux alive is important. Building HP on Castorice also increases Pollux's base HP. Luocha's emergency healing can save Pollux from death if timed well.</p>
+
+<h3>Is Castorice better than Seele at single-target?</h3>
+<p>In single-target scenarios, Seele still holds an advantage thanks to her Resurgence mechanic enabling extra turns and her higher single-target multipliers. However, Castorice significantly outperforms Seele in any multi-target scenario and against Quantum-weak enemies. For mixed content (2-3 enemies), Castorice is generally the stronger pick.</p>
+
+<div class="amazon-affiliate" style="background:#1a1a2e;padding:1rem;border-radius:8px;margin:1.5rem 0;border:1px solid #333;text-align:center">
+  <p style="color:#aaa;font-size:0.85rem">As an Amazon Associate I earn from qualifying purchases.</p>
+  <a href="https://www.amazon.com/dp/B0CN6H3NYN?tag=zhonghong20-20" target="_blank" rel="nofollow sponsored" style="display:inline-block;background:#333;color:#ffd700;padding:0.4rem 1rem;border-radius:4px;text-decoration:none;font-size:0.85rem">🖱️ Shop Peripherals on Amazon</a>
+</div>
+</article></main>
+<footer><div class="container"><p>&copy; 2026 HSR Guide. Data from community consensus and in-game testing. Not affiliated with HoYoverse.</p></div></footer>
+<footer class="site-network" style="margin-top:3rem;padding:1.5rem;background:#1a1a2e;border-radius:8px;text-align:center">
+  <p style="color:#aaa;font-size:0.85rem;margin-bottom:0.8rem">🎮 攻略网络 — More Game Guides</p>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem">
+    <a href="https://chjiya.github.io/teyvat-guide/" style="color:#4fc3f7;text-decoration:none;padding:0.3rem 0.6rem;border:1px solid #333;border-radius:4px;font-size:0.8rem">原神 Genshin</a>
+    <a href="https://chjiya.github.io/hsr-guide/" style="color:#4fc3f7;text-decoration:none;padding:0.3rem 0.6rem;border:1px solid #333;border-radius:4px;font-size:0.8rem">星铁 HSR</a>
+    <a href="https://chjiya.github.io/zzz-guide/" style="color:#4fc3f7;text-decoration:none;padding:0.3rem 0.6rem;border:1px solid #333;border-radius:4px;font-size:0.8rem">绝区零 ZZZ</a>
+    <a href="https://chjiya.github.io/sr-guide-en/" style="color:#4fc3f7;text-decoration:none;padding:0.3rem 0.6rem;border:1px solid #333;border-radius:4px;font-size:0.8rem">HSR (EN)</a>
+    <a href="https://chjiya.github.io/enshin-guide-en/" style="color:#4fc3f7;text-decoration:none;padding:0.3rem 0.6rem;border:1px solid #333;border-radius:4px;font-size:0.8rem">Genshin (EN)</a>
+    <a href="https://chjiya.github.io/zzz-guide-en/" style="color:#4fc3f7;text-decoration:none;padding:0.3rem 0.6rem;border:1px solid #333;border-radius:4px;font-size:0.8rem">ZZZ (EN)</a>
+  </div>
+</footer>
+</body>
+</html>
