@@ -1,583 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <base href="/sr-guide-en/">
-  <title>Simulated Universe Complete Guide (v3.4) — Honkai: Star Rail</title>
-  <meta name="description" content="Complete Simulated Universe guide for Honkai: Star Rail. All 9 Paths ranked, best Blessings per Path, Curio tier list, domain routing, Swarm Disaster, Gold & Gears, Divergent Universe, team building, and weekly reward optimization.">
-  <link rel="canonical" href="https://example.com/sr-guide-en/guides/simulated-universe.html">
-  
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4B26RL1D24"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4B26RL1D24');
-  </script>
-
-  <!-- JSON-LD Article Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Simulated Universe Complete Guide (v3.4)",
-    "description": "Complete Simulated Universe guide covering all 9 Paths, Blessings, Curios, domain routing, expansion modes, and weekly optimization.",
-    "datePublished": "2026-06-15",
-    "dateModified": "2026-06-15",
-    "author": {
-      "@type": "Person",
-      "name": "SR Guide"
-    }
-  }
-  </script>
-
-  <style>
-    :root {
-      --bg: #0f0f1a;
-      --card: #1a1a2e;
-      --accent: #ff6b9d;
-      --accent2: #c084fc;
-      --gold: #fbbf24;
-      --text: #e2e8f0;
-      --text-dim: #94a3b8;
-      --border: #2a2a4a;
-      --s-tier: #ff6b6b;
-      --a-tier: #ffa94d;
-      --b-tier: #74c0fc;
-      --c-tier: #94a3b8;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      min-height: 100vh;
-    }
-
-    /* Header */
-    header {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 0;
-      position: sticky; top: 0; z-index: 100;
-      backdrop-filter: blur(12px);
-    }
-    .header-inner {
-      max-width: 1000px; margin: 0 auto; padding: 0 1.5rem;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .logo { font-size: 1.4rem; font-weight: 700; color: var(--accent); text-decoration: none; }
-    .logo span { color: var(--accent2); }
-    nav a {
-      color: var(--text-dim); text-decoration: none; margin-left: 1.5rem;
-      font-size: 0.9rem; transition: color .2s;
-    }
-    nav a:hover, nav a.active { color: var(--accent); }
-    .badge {
-      display: inline-block; background: var(--accent); color: #fff;
-      font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 4px;
-      margin-left: 0.5rem; vertical-align: middle;
-    }
-
-    /* Main */
-    .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
-
-    h1 { font-size: 2.2rem; margin-bottom: 0.5rem; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .meta { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
-
-    h2 { font-size: 1.5rem; margin: 2.5rem 0 1rem; color: var(--accent); }
-    h3 { font-size: 1.2rem; margin: 1.5rem 0 0.75rem; color: var(--text); }
-    p, li { color: var(--text-dim); margin-bottom: 0.75rem; }
-
-    /* Tables */
-    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
-    th, td { padding: 0.7rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
-    th { background: rgba(255,255,255,0.04); color: var(--accent2); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    td { color: var(--text); }
-    tr:hover td { background: rgba(255,255,255,0.02); }
-
-    /* Cards */
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin: 1rem 0; }
-    .card h3 { margin-top: 0; }
-
-    .tier-s { border-left: 4px solid var(--s-tier); }
-    .tier-a { border-left: 4px solid var(--a-tier); }
-    .tier-b { border-left: 4px solid var(--b-tier); }
-
-    .tier-label { display: inline-block; font-weight: 700; font-size: 0.85rem; padding: 0.15rem 0.6rem; border-radius: 4px; margin-right: 0.5rem; }
-    .tier-s .tier-label { background: var(--s-tier); color: #000; }
-    .tier-a .tier-label { background: var(--a-tier); color: #000; }
-    .tier-b .tier-label { background: var(--b-tier); color: #000; }
-
-    .must-pick { color: #4ade80; font-weight: 600; }
-    .skip { color: #f87171; font-weight: 600; }
-    .situational { color: #fbbf24; font-weight: 600; }
-
-    ul { padding-left: 1.5rem; }
-    ul li { margin-bottom: 0.4rem; }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border); padding: 2rem 0;
-      text-align: center; color: var(--text-dim); font-size: 0.85rem;
-    }
-
-    @media (max-width: 640px) {
-      h1 { font-size: 1.6rem; }
-      .header-inner { flex-direction: column; gap: 0.5rem; }
-      nav a { margin: 0 0.75rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base href="/sr-guide-en/">
+<meta name="description" content="Complete Simulated Universe guide for Honkai: Star Rail v3.4. All 8 paths explained (Remembrance, Erudition, Propagation, Elation, Nihility, Abundance, Preservation, Hunt), best blessings, equation builds, and expansion mode strategies including Gold & Gears, Swarm Disaster, and Uncharted Track.">
+<meta name="keywords" content="HSR, Honkai Star Rail, Simulated Universe, SU guide, v3.4, path guide, blessings, equations, Gold and Gears, Swarm Disaster, Uncharted Track, Remembrance path, Erudition path, Propagation path, Elation path, Nihility path, Abundance path, Preservation path, Hunt path">
+<link rel="canonical" href="https://chjiya.github.io/sr-guide-en/guides/simulated-universe.html">
+<link rel="stylesheet" href="/sr-guide-en/css/style.css">
+<style>
+.badge { display:inline-block;background:var(--accent);color:#fff;padding:2px 12px;border-radius:12px;font-size:0.8rem;font-weight:600;margin-right:8px; }
+.path-card { background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:16px 0;border-left:4px solid var(--accent); }
+.path-card h3 { color:var(--accent);margin-bottom:6px; }
+.equation-box { background:rgba(255,107,53,0.08);border-left:3px solid var(--accent);padding:12px 16px;margin:10px 0;border-radius:0 var(--radius) var(--radius) 0; }
+.tier-s { color:var(--green);font-weight:700; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Simulated Universe Guide — All Paths, Blessings & Expansion Modes v3.4",
+  "description": "Complete Simulated Universe guide for Honkai: Star Rail v3.4. Covers all 8 paths including Remembrance (memosprite), Erudition, Propagation, Elation, Nihility, Abundance, Preservation, and Hunt. Best blessing picks, equation builds, and full coverage of Gold & Gears, Swarm Disaster, and Uncharted Track expansion modes. Updated for v3.4.",
+  "dateModified": "2026-06-18",
+  "datePublished": "2026-06-18",
+  "inLanguage": "en-US",
+  "author": { "@type": "Organization", "name": "HSR Guide" }
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4B26RL1D24"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4B26RL1D24');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3857626678274044" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<!-- ==================== HEADER ==================== -->
-<header>
-  <div class="header-inner">
-    <a href="/sr-guide-en/" class="logo">SR <span>Guide</span></a>
-    <nav>
-      <a href="/sr-guide-en/">Home</a>
-      <a href="/sr-guide-en/guides/memory-of-chaos.html">Memory of Chaos</a>
-      <a href="/sr-guide-en/guides/simulated-universe.html" class="active">Simulated Universe</a>
-    </nav>
-  </div>
+<header class="site-header">
+<div class="container">
+<a href="/sr-guide-en/" class="logo">🚂 HSR Guide</a>
+<nav><a href="/sr-guide-en/guides/">Guides</a><a href="/sr-guide-en/guides/characters/">Characters</a><a href="/sr-guide-en/guides/bosses/">Bosses</a><a href="/sr-guide-en/guides/lightcones/">Light Cones</a><a href="/sr-guide-en/tier-list.html">Tier List</a><a href="/sr-guide-en/news/">News</a></nav>
+</div>
 </header>
 
-<!-- ==================== CONTENT ==================== -->
-<div class="container">
+<main class="container">
 
-  <!-- Breadcrumb -->
-  <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:1rem;">
-    <a href="/sr-guide-en/" style="color:var(--accent2);">Home</a> / 
-    <a href="/sr-guide-en/guides/" style="color:var(--accent2);">Guides</a> / 
-    Simulated Universe
-    <span class="badge">v3.4</span>
-  </p>
+<nav class="breadcrumb" style="padding:20px 0 10px;color:var(--muted);font-size:0.9rem;">
+<a href="/sr-guide-en/">Home</a> &raquo; <a href="/sr-guide-en/guides/">Guides</a> &raquo; Simulated Universe
+</nav>
 
-  <h1>Simulated Universe Complete Guide</h1>
-  <p class="meta">Last updated: June 15, 2026 — Version 3.4 &nbsp;|&nbsp; Covers base SU + Swarm Disaster + Gold & Gears + Divergent Universe</p>
+<article>
 
-  <!-- ============ TOC ============ -->
-  <div class="card">
-    <h3>Table of Contents</h3>
-    <ul>
-      <li><a href="#overview" style="color:var(--accent2);">1. Overview &amp; How It Works</a></li>
-      <li><a href="#paths" style="color:var(--accent2);">2. All 9 Paths — Ranked &amp; Explained</a></li>
-      <li><a href="#blessings" style="color:var(--accent2);">3. Best Blessings per Path</a></li>
-      <li><a href="#curios" style="color:var(--accent2);">4. Curio Tier List</a></li>
-      <li><a href="#domains" style="color:var(--accent2);">5. Domain Routing Strategy</a></li>
-      <li><a href="#expansion" style="color:var(--accent2);">6. Expansion Modes</a></li>
-      <li><a href="#teams" style="color:var(--accent2);">7. Team Building</a></li>
-      <li><a href="#rewards" style="color:var(--accent2);">8. Weekly Reward Optimization</a></li>
-    </ul>
-  </div>
+<span class="badge">v3.4</span>
+<h1 style="font-size:2rem;margin:10px 0 8px;">🌀 Simulated Universe Guide — All Paths & Expansion Modes</h1>
+<div class="article-meta" style="color:var(--muted);margin-bottom:30px;">Updated 2026-06-18 · Roguelike Guide · 8 paths + 3 expansion modes</div>
 
-  <!-- ============ 1. OVERVIEW ============ -->
-  <h2 id="overview">1. Overview &amp; How It Works</h2>
-  <p>The <strong>Simulated Universe (SU)</strong> is a roguelike game mode unlocked after completing Trailblaze Level 22. You assemble a team of 4 characters, then run through procedurally generated domains, collecting <strong>Blessings</strong> (passive buffs tied to a chosen <strong>Path</strong>), <strong>Curios</strong> (unique artifacts with powerful effects — and sometimes drawbacks), and <strong>Cosmic Fragments</strong> (currency for rerolls and upgrades).</p>
-
-  <p>Each run culminates in a boss fight against a simulated version of an Elite or Stagnant Shadow enemy. The deeper you go, the harder the enemies — but the better the rewards.</p>
-
-  <h3>Core Mechanics</h3>
-  <ul>
-    <li><strong>Path Selection</strong> — Before starting, choose one of 9 Paths. Your Path determines which Blessings appear more frequently and what your 3-resonance Path ability does.</li>
-    <li><strong>Blessings</strong> — Stackable buffs. Collecting 3/6/10 of your Path's Blessings unlocks Resonance formations and buffs your Path Resonance ability.</li>
-    <li><strong>Curios</strong> — One-of-a-kind items. Some are strictly beneficial; others have trade-offs ("double-edged" curios).</li>
-    <li><strong>Cosmic Fragments</strong> — Spend at shops to buy Blessings, Curios, or remove negative Curios.</li>
-    <li><strong>Respite Zones</strong> — Heal, revive a fallen character, or enhance Blessings (3 upgrades per run).</li>
-  </ul>
-
-  <h3>Weekly Rewards at a Glance</h3>
-  <table>
-    <tr><th>Activity</th><th>Reward</th><th>Cap</th></tr>
-    <tr><td>SU Points (per run)</td><td>Stellar Jade, EXP materials, Credits, relic remains</td><td>10,000 pts / week</td></tr>
-    <tr><td>Swarm Disaster</td><td>Stellar Jade + exclusive Light Cone materials</td><td>One-time (per difficulty)</td></tr>
-    <tr><td>Gold & Gears</td><td>Stellar Jade + custom Dice unlockables</td><td>One-time (per difficulty)</td></tr>
-    <tr><td>Divergent Universe</td><td>Equation components, Stellar Jade</td><td>8,000 pts / week</td></tr>
-  </table>
-
-  <!-- ============ 2. ALL 9 PATHS ============ -->
-  <h2 id="paths">2. All 9 Paths — Ranked &amp; Explained</h2>
-  <p>Paths are ranked S through B: <strong>S</strong> (meta-defining), <strong>A</strong> (strong in the right team), <strong>B</strong> (niche or power-crept).</p>
-
-  <!-- Hunt -->
-  <div class="card tier-s">
-    <h3><span class="tier-label">S</span> The Hunt — Single-Target Dominance</h3>
-    <p><strong>Best for:</strong> Boss kills, Simulated Universe boss floors, any run with a strong main DPS.</p>
-    <p>The Hunt massively amplifies single-target damage. Its Path Resonance deals devastating ST damage scaling with SPD. Core Blessings give SPD boosts, action advance, and bonus damage against slowed enemies. The 6-Blessing Resonance (Bow and Arrow) fires a chain of ST hits that clean up adds while melting the main target.</p>
-    <p><strong>Synergy:</strong> Seele, Dr. Ratio, Boothill, Feixiao, Topaz.</p>
-  </div>
-
-  <!-- Destruction -->
-  <div class="card tier-s">
-    <h3><span class="tier-label">S</span> Destruction — HP Scaling &amp; Massive AoE</h3>
-    <p><strong>Best for:</strong> High-difficulty content, survival + damage hybrid, teams with HP fluctuation.</p>
-    <p>Destruction Blessings scale off max HP and the party's missing HP. The Path Resonance detonates HP-based AoE damage and heals the team proportionally. Its 10-Blessing "Atomic" upgrade gives massive damage reduction at low HP and retaliatory nukes. Arguably the strongest all-around Path for high-level SU and Swarm Disaster.</p>
-    <p><strong>Synergy:</strong> Blade, Mydei, Jingliu, Firefly, Clara, Yunli.</p>
-  </div>
-
-  <!-- Nihility -->
-  <div class="card tier-a">
-    <h3><span class="tier-label">A</span> Nihility — DoT Amplification</h3>
-    <p><strong>Best for:</strong> DoT teams (Kafka, Black Swan, Sampo, Guinafen, Jiaoqiu).</p>
-    <p>Nihility Blessings make DoTs tick harder, faster, and spread between enemies. Key Blessings increase DoT damage per stack, cause DoTs to crit, and make enemies take bonus damage for each debuff active. Path Resonance applies all DoT types to all enemies at once. The 6-Blessing Resonance (Dewdrop) stores DoT damage and detonates it again.</p>
-    <p><strong>Synergy:</strong> Kafka, Black Swan, Sampo, Guinafen, Jiaoqiu.</p>
-  </div>
-
-  <!-- Erudition -->
-  <div class="card tier-a">
-    <h3><span class="tier-label">A</span> Erudition — AoE Specialization</h3>
-    <p><strong>Best for:</strong> Pure Fiction-style content, mob-heavy floors, teams with multiple AoE DPS.</p>
-    <p>Erudition boosts every multi-target attack. Its Blessings give extra DMG% per enemy hit, energy on multi-target kills, and stacking AoE multipliers. Path Resonance deals damage to all enemies equal to a portion of the team's total energy. Best paired with dedicated AoE carries.</p>
-    <p><strong>Synergy:</strong> Argenti, Herta, Himeko, Jade, Rappa, The Herta.</p>
-  </div>
-
-  <!-- Preservation -->
-  <div class="card tier-a">
-    <h3><span class="tier-label">A</span> Preservation — Shield Stacking</h3>
-    <p><strong>Best for:</strong> Survival-oriented runs, low-investment teams, sustain-free comps.</p>
-    <p>Preservation Blessings turn shields into your primary damage source. Key Blessings cause the team to deal bonus damage equal to a % of current shield value, reflect damage on block, and charge Path Resonance from shield absorption. The 6-Blessing Resonance deals AoE damage scaling with total party shields.</p>
-    <p><strong>Synergy:</strong> Aventurine, Fu Xuan, Gepard, March 7th (Preservation), Trailblazer (Preservation).</p>
-  </div>
-
-  <!-- Abundance -->
-  <div class="card tier-a">
-    <h3><span class="tier-label">A</span> Abundance — Healing &amp; Cleanse</h3>
-    <p><strong>Best for:</strong> Sustained fights, teams without dedicated healers, debuff-heavy encounters.</p>
-    <p>Abundance turns overhealing into damage and provides constant cleanse. Key Blessings add damage to heals, let healing overflow as bonus damage, and auto-cleanse debuffs when HP drops below 50%. Path Resonance is a massive team-wide heal + cleanse that stored a portion of healing done since last use.</p>
-    <p><strong>Synergy:</strong> Luocha, Huohuo, Bailu, Natasha, Lynx, Gallagher.</p>
-  </div>
-
-  <!-- Remembrance -->
-  <div class="card tier-b">
-    <h3><span class="tier-label">B</span> Remembrance — Freeze &amp; Dissociation</h3>
-    <p><strong>Best for:</strong> Freeze-centric teams, crowd control strategies.</p>
-    <p>Remembrance focuses on the Freeze debuff and the Dissociation mechanic — a special state that deals bonus damage when it ends. Key Blessings increase freeze chance, extend freeze duration, and cause Dissociation to spread. Path Resonance freezes all enemies and applies Dissociation. Falls off against freeze-immune bosses.</p>
-    <p><strong>Synergy:</strong> Jingliu, Gepard, Herta (freeze synergy), March 7th.</p>
-  </div>
-
-  <!-- Propagation -->
-  <div class="card tier-b">
-    <h3><span class="tier-label">B</span> Propagation — Skill Point Spam</h3>
-    <p><strong>Best for:</strong> Skill-point-hungry teams, multi-action carries.</p>
-    <p>Propagation rewards spamming Skills every turn. Blessings refund skill points on kill, boost Basic ATK damage after skill use, and give SPD per skill point spent. Path Resonance consumes all remaining skill points to deal damage per point. Very powerful in ideal team configurations but narrow.</p>
-    <p><strong>Synergy:</strong> Dan Heng • Imbibitor Lunae, Qingque, Argenti (SP-heavy playstyle).</p>
-  </div>
-
-  <!-- Elation -->
-  <div class="card tier-b">
-    <h3><span class="tier-label">B</span> Elation — Follow-Up Attack Focus</h3>
-    <p><strong>Best for:</strong> FUA-centric teams (Topaz + Numby, Dr. Ratio, Clara, Yunli, Aventurine, Feixiao).</p>
-    <p>Elation amplifies follow-up attacks. Key Blessings boost FUA DMG, add extra hits per FUA, and give energy on FUA. Path Resonance triggers the party's most recent FUA again at reduced damage. Strong on paper but requires a dedicated FUA team to outpace Destruction or Hunt.</p>
-    <p><strong>Synergy:</strong> Topaz, Dr. Ratio, Clara, Yunli, Aventurine, Feixiao, Jing Yuan, Herta.</p>
-  </div>
-
-  <!-- Path Ranking Summary Table -->
-  <h3>Path Ranking Summary</h3>
-  <table>
-    <tr><th>Tier</th><th>Path</th><th>Role</th><th>Best Content</th></tr>
-    <tr><td style="color:var(--s-tier); font-weight:700;">S</td><td>The Hunt</td><td>Single-Target Carry</td><td>Boss floors, SU</td></tr>
-    <tr><td style="color:var(--s-tier); font-weight:700;">S</td><td>Destruction</td><td>HP-Scaling AoE Tank</td><td>Swarm Disaster, high diff</td></tr>
-    <tr><td style="color:var(--a-tier); font-weight:700;">A</td><td>Nihility</td><td>DoT Amplifier</td><td>DoT teams, Swarm</td></tr>
-    <tr><td style="color:var(--a-tier); font-weight:700;">A</td><td>Erudition</td><td>AoE Specialist</td><td>Mob floors, Pure Fiction</td></tr>
-    <tr><td style="color:var(--a-tier); font-weight:700;">A</td><td>Preservation</td><td>Shield Tank</td><td>Low-investment, survival</td></tr>
-    <tr><td style="color:var(--a-tier); font-weight:700;">A</td><td>Abundance</td><td>Heal &amp; Cleanse</td><td>Debuff-heavy encounters</td></tr>
-    <tr><td style="color:var(--b-tier); font-weight:700;">B</td><td>Remembrance</td><td>Freeze Control</td><td>Non-immune enemies</td></tr>
-    <tr><td style="color:var(--b-tier); font-weight:700;">B</td><td>Propagation</td><td>SP Battery</td><td>SP-heavy teams</td></tr>
-    <tr><td style="color:var(--b-tier); font-weight:700;">B</td><td>Elation</td><td>FUA Amplifier</td><td>FUA teams</td></tr>
-  </table>
-
-  <!-- ============ 3. BEST BLESSINGS PER PATH ============ -->
-  <h2 id="blessings">3. Best Blessings per Path</h2>
-  <p>Each Path has 12+ Blessings. Below are the <strong>must-pick</strong> (MP) and <strong>skip</strong> recommendations. Focus your Cosmic Fragment rerolls chasing the must-picks.</p>
-
-  <h3>Hunt — Must-Pick Blessings</h3>
-  <table>
-    <tr><th>Blessing</th><th>Rating</th><th>Why</th></tr>
-    <tr><td>Victory and Advance</td><td class="must-pick">Must-Pick</td><td>+20% SPD; after killing an enemy, gain extra turn (1/turn). Core ST engine.</td></tr>
-    <tr><td>The Quicker the Heart</td><td class="must-pick">Must-Pick</td><td>For every 10 SPD above 100, deals 10% more DMG. No cap. Scales infinitely.</td></tr>
-    <tr><td>Flowing Through the Sky</td><td class="must-pick">Must-Pick</td><td>Ultimates deal 40% more DMG. Best paired with any DPS ult.</td></tr>
-    <tr><td>Veil of Espionage</td><td class="situational">Situational</td><td>Attacking a slowed enemy: CRIT +12%, CRIT DMG +18%. Good if you have slow appliers.</td></tr>
-    <tr><td>Army of the Chaser</td><td class="skip">Skip</td><td>Reduced DMG after killing. Not needed; offensive wins.</td></tr>
-  </table>
-
-  <h3>Destruction — Must-Pick Blessings</h3>
-  <table>
-    <tr><th>Blessing</th><th>Rating</th><th>Why</th></tr>
-    <tr><td>Reverberation of the Womb</td><td class="must-pick">Must-Pick</td><td>When taking fatal DMG, become immortal for 1 turn then heal 50% HP. Once-per-run lifesaver.</td></tr>
-    <tr><td>Living Beyond the Clouds</td><td class="must-pick">Must-Pick</td><td>For every 100 HP lost by the team, deal 8% more DMG (up to 240%). Devastating with HP fluctuation.</td></tr>
-    <tr><td>Battle-Beast of the Bounded Land</td><td class="must-pick">Must-Pick</td><td>DMG reduction scales with HP. Core survival Blessing.</td></tr>
-    <tr><td>Cataclysmic Disposition</td><td class="situational">Situational</td><td>Heal 20% HP when using Path Resonance. Good for sustain.</td></tr>
-  </table>
-
-  <h3>Nihility — Must-Pick Blessings</h3>
-  <table>
-    <tr><th>Blessing</th><th>Rating</th><th>Why</th></tr>
-    <tr><td>Unfulfilled Yearning</td><td class="must-pick">Must-Pick</td><td>DoTs can CRIT. Transforms DoT damage ceiling.</td></tr>
-    <tr><td>Howling of the Victors</td><td class="must-pick">Must-Pick</td><td>For every DoT on an enemy, take 6% more DMG. Stacks infinitely.</td></tr>
-    <tr><td>Labyrinth of the Blackness</td><td class="must-pick">Must-Pick</td><td>Extend DoT duration by 1 turn when refreshed. Keeps DoTs running permanently.</td></tr>
-    <tr><td>The Deeps of Another's Fate</td><td class="skip">Skip</td><td>DoT on basic ATK. Very weak compared to Path-specific Blessings.</td></tr>
-  </table>
-
-  <h3>Erudition — Must-Pick Blessings</h3>
-  <table>
-    <tr><th>Blessing</th><th>Rating</th><th>Why</th></tr>
-    <tr><td>Light of the Constructive Orbit</td><td class="must-pick">Must-Pick</td><td>For every enemy hit, gain 5% DMG for this attack. Run-ender in mob fights.</td></tr>
-    <tr><td>Stratagems of the Spectacle</td><td class="must-pick">Must-Pick</td><td>Ultimates restore 20% energy per enemy killed. Loop ults in AoE scenarios.</td></tr>
-    <tr><td>Evident Observation</td><td class="situational">Situational</td><td>After hitting 5+ enemies, next attack ignores 30% DEF. Excellent on boss floors.</td></tr>
-  </table>
-
-  <h3>Preservation — Must-Pick Blessings</h3>
-  <table>
-    <tr><th>Blessing</th><th>Rating</th><th>Why</th></tr>
-    <tr><td>Dragon-God of Permanence</td><td class="must-pick">Must-Pick</td><td>When shielded, deal 30% more DMG. Universal damage amp for any shielded team.</td></tr>
-    <tr><td>Construct of Firmament</td><td class="must-pick">Must-Pick</td><td>After gaining a shield, team takes 15% less DMG for 1 turn. Critical for survival.</td></tr>
-    <tr><td>Indelible Promise</td><td class="must-pick">Must-Pick</td><td>When shield absorbs damage, charge Path Resonance by 4%. Core Resonance engine.</td></tr>
-  </table>
-
-  <h3>Abundance — Must-Pick Blessings</h3>
-  <table>
-    <tr><th>Blessing</th><th>Rating</th><th>Why</th></tr>
-    <tr><td>Wreath of Interlaced Pipes</td><td class="must-pick">Must-Pick</td><td>When healing an ally, deal damage equal to 30% of healing to all enemies. Offensive healing.</td></tr>
-    <tr><td>Radiant Supreme</td><td class="must-pick">Must-Pick</td><td>Healing that exceeds max HP becomes bonus DMG on next attack. Converts overheal.</td></tr>
-    <tr><td>Perfect Experience of Tranquility</td><td class="must-pick">Must-Pick</td><td>Auto-cleanse debuffs when HP drops below 50%. Anti-CC safety net.</td></tr>
-  </table>
-
-  <h3>Remembrance — Key Blessings</h3>
-  <table>
-    <tr><th>Blessing</th><th>Rating</th><th>Why</th></tr>
-    <tr><td>Experience of the Puppets</td><td class="must-pick">Must-Pick</td><td>Freeze lasts +1 turn. Doubles CC uptime.</td></tr>
-    <tr><td>Memory of the Rime</td><td class="must-pick">Must-Pick</td><td>Dissociation triggers twice. Core damage multiplier.</td></tr>
-    <tr><td>Crystallization of the Glory</td><td class="situational">Situational</td><td>When attacking a Frozen enemy, deal 60% ATK as extra Ice DMG. Niche.</td></tr>
-  </table>
-
-  <h3>Propagation — Key Blessings</h3>
-  <table>
-    <tr><th>Blessing</th><th>Rating</th><th>Why</th></tr>
-    <tr><td>Decapitation of the Corpses</td><td class="must-pick">Must-Pick</td><td>Bug kills restore 2 skill points. Infinite SP in mob rooms.</td></tr>
-    <tr><td>Shell of the Cacoon</td><td class="must-pick">Must-Pick</td><td>For each skill point spent, next Basic ATK deals 30% extra DMG. Stacking powerhouse.</td></tr>
-    <tr><td>Intermeshing of the Muscles</td><td class="situational">Situational</td><td>After using Skill, gain +15% SPD for 1 turn. Good for action-advance loops.</td></tr>
-  </table>
-
-  <h3>Elation — Key Blessings</h3>
-  <table>
-    <tr><th>Blessing</th><th>Rating</th><th>Why</th></tr>
-    <tr><td>Mourning of a Playwright</td><td class="must-pick">Must-Pick</td><td>After FUA, next attack deals 50% more DMG. Core multiplier.</td></tr>
-    <tr><td>Persistence of Memories</td><td class="must-pick">Must-Pick</td><td>FUA has 60% chance to trigger an additional follow-up. Double the hits.</td></tr>
-    <tr><td>Sunflower of the Backwater</td><td class="must-pick">Must-Pick</td><td>After FUA, team regenerates 8 energy. Fuel for ult cycle.</td></tr>
-  </table>
-
-  <!-- ============ 4. CURIO TIER LIST ============ -->
-  <h2 id="curios">4. Curio Tier List</h2>
-  <p>Curios are unique artifacts that last the whole run. Some are run-defining; others are traps. Curios marked with ⚠ have drawbacks.</p>
-
-  <h3>S-Tier (Always Take)</h3>
-  <table>
-    <tr><th>Curio</th><th>Effect</th></tr>
-    <tr><td>Damaged Cycrane</td><td>+30% ATK, -8% DEF. Pure offensive gain.</td></tr>
-    <tr><td>Cosmic Big Lotto</td><td>+100% Cosmic Fragments from combat. Accelerates your entire run economy.</td></tr>
-    <tr><td>Interstellar Blueprint</td><td>Start of combat: apply all weaknesses for 2 turns. Free damage amp.</td></tr>
-    <tr><td>Oscar</td><td>+24% CRIT DMG, +20% CRIT Rate. Best all-round DPS Curio.</td></tr>
-    <tr><td>Dimensional Rainbow</td><td>Gain a random 3-star Blessing at the start of each domain. Value over time exceeds any single Curio.</td></tr>
-  </table>
-
-  <h3>A-Tier (Strong, Take If Available)</h3>
-  <table>
-    <tr><th>Curio</th><th>Effect</th></tr>
-    <tr><td>Faith of Disbelief</td><td>+16% SPD. Speed is always valuable.</td></tr>
-    <tr><td>Funny Chapstick</td><td>Heal 12% HP after each battle. Passive sustain.</td></tr>
-    <tr><td>Recordless Diary</td><td>+20% Effect Hit Rate. Excellent for Nihility teams.</td></tr>
-    <tr><td>Gold Coin of Discord</td><td>Gain 200 Cosmic Fragments but lose 25% current HP. Good value early.</td></tr>
-    <tr><td>⚠ Divination of the Hanged Man</td><td>+50% DMG but you can't heal. Run-ender for some teams; amazing for Preservation/Aventurine.</td></tr>
-  </table>
-
-  <h3>B-Tier (Niche / Situational)</h3>
-  <table>
-    <tr><th>Curio</th><th>Effect</th></tr>
-    <tr><td>Seal of Soft Cotton</td><td>When taking DMG that would reduce HP below 25%, heal 50%. Once per battle. Falls off in high diff.</td></tr>
-    <tr><td>⚠ Society Ticket</td><td>Blessings enhanced for free, but gain 1 less Blessing per domain. Saves fragments but starves your run.</td></tr>
-    <tr><td>Punklorde Mentality</td><td>+3 max Skill Points. Good for Propagation; marginal otherwise.</td></tr>
-    <tr><td>⚠ Round Table of Steel</td><td>+160 Cosmic Fragments but enemy SPD +30%. Can snowball with good frag management.</td></tr>
-  </table>
-
-  <h3>C-Tier (Skip / Remove)</h3>
-  <table>
-    <tr><th>Curio</th><th>Why to Skip</th></tr>
-    <tr><td>⚠ Pedometer</td><td>Gain a random Blessing every 20 battles but lose 5% max HP per battle. Not worth the health drain.</td></tr>
-    <tr><td>⚠ Black Market</td><td>All shop prices halved but enemies drop no Cosmic Fragments. Traps you into poor economy.</td></tr>
-    <tr><td>⚠ Hand of the Bandit</td><td>+35% ATK, -15% DEF. Better than nothing but puts your team at risk.</td></tr>
-    <tr><td>Spores of Slumber</td><td>Weak effect that scales with spores; hard to maintain stacks.</td></tr>
-  </table>
-
-  <!-- ============ 5. DOMAIN ROUTING ============ -->
-  <h2 id="domains">5. Domain Routing Strategy</h2>
-  <p>Each SU floor presents a choice of domains. Choosing the right route can make or break a run.</p>
-
-  <h3>Domain Types</h3>
-  <table>
-    <tr><th>Domain</th><th>Icon</th><th>Best For</th></tr>
-    <tr><td>Combat</td><td>⚔️</td><td>Early-game Blessing building. 3-star Blessings drop from Elite Combats.</td></tr>
-    <tr><td>Reward</td><td>🎁</td><td>Choosing a specific 1-star or 2-star Blessing. Good for filling your 3/6/10 resonance counts.</td></tr>
-    <tr><td>Adventure</td><td>🌟</td><td>Mini-games for large Cosmic Fragment payouts. Prioritize when saving for shop.</td></tr>
-    <tr><td>Shop (Respite)</td><td>🛒</td><td>Buy/sell Blessings, buy Curios, remove negative Curios. Best domain in the game.</td></tr>
-    <tr><td>Occurrence</td><td>❓</td><td>Random events. High variance. Can give Curios or free Blessings; can also curse you.</td></tr>
-    <tr><td>Elite</td><td>💀</td><td>Tough fight for 3-star Blessing + Curio. Take when your team is strong.</td></tr>
-    <tr><td>Boss</td><td>👑</td><td>Final floor of each plane. Rewards a Curio + high-rarity Blessing.</td></tr>
-  </table>
-
-  <h3>Routing Priorities by Phase</h3>
-
-  <h4>First Plane (Domains 1–3)</h4>
-  <p>Priority: <strong>Combat &gt; Adventure &gt; Reward &gt; Occurrence &gt; Elite</strong></p>
-  <ul>
-    <li>Your team is weak. Take safe Combat domains for Blessing collection.</li>
-    <li>Adventure domains give fragments, letting you shop on Plane 2.</li>
-    <li>Avoid Elite if your team isn't built yet.</li>
-  </ul>
-
-  <h4>Second Plane (Domains 4–6)</h4>
-  <p>Priority: <strong>Shop &gt; Elite &gt; Adventure &gt; Reward &gt; Occurrence</strong></p>
-  <ul>
-    <li>If you saved fragments, the Shop lets you buy missing key Blessings and Curios.</li>
-    <li>If your build is coming together, take Elites for 3-star Blessings.</li>
-    <li>Avoid Occurrences — the risk-reward isn't worth it by now.</li>
-  </ul>
-
-  <h4>Third Plane (Domains 7–9, Boss)</h4>
-  <p>Priority: <strong>Elite &gt; Shop &gt; Boss</strong></p>
-  <ul>
-    <li>Stack your final Blessings from Elites.</li>
-    <li>Use the last Shop to reroll for 3-star upgrades.</li>
-    <li>Enter the Boss with as close to 10 Path Blessings as possible.</li>
-  </ul>
-
-  <h3>Path-Specific Routing Tips</h3>
-  <ul>
-    <li><strong>Hunt / Destruction:</strong> Prioritize Elites for 3-star Blessings. Both paths spike hardest at 6 and 10 Blessings.</li>
-    <li><strong>Nihility:</strong> Reward domains are excellent for hitting 3/6 breakpoints. You need the specific DoT-crit Blessing.</li>
-    <li><strong>Preservation / Abundance:</strong> You can facetank Elites early. Take more Elites than other paths.</li>
-    <li><strong>Remembrance / Propagation / Elation:</strong> Spec into Occurrences for the off-chance of rare unique Blessings that make these paths work.</li>
-  </ul>
-
-  <!-- ============ 6. EXPANSION MODES ============ -->
-  <h2 id="expansion">6. Expansion Modes</h2>
-
-  <h3>Swarm Disaster</h3>
-  <p>The first major SU expansion. Adds a <strong>secondary Path</strong> mechanic — you equip two Paths and can use both Resonance abilities. The Swarm enemy type features bugs that multiply and explode.</p>
-  <ul>
-    <li><strong>Communication:</strong> Use the "Swarm Communicator" to unlock story segments and hidden bosses.</li>
-    <li><strong>Best Paths:</strong> Destruction + Abundance for survival. Destruction + Hunt for speed clears. Nihility + Elation for DoT + FUA hybrid.</li>
-    <li><strong>Hardest Boss:</strong> True Sting (Swarm: Golden Sting). Bring high AoE to clear adds.</li>
-    <li><strong>Rewards:</strong> Stellar Jade, self-modeling resin, exclusive Light Cone (expansion pass).</li>
-  </ul>
-
-  <h3>Gold &amp; Gears</h3>
-  <p>The second expansion, centered on <strong>custom Dice</strong>. Each die face can be customized with effects that trigger when you land on that domain type.</p>
-  <ul>
-    <li><strong>Dice Customization:</strong> Use Wissen (knowledge currency) earned by completing runs to unlock new die faces. Build dice that favor your chosen Path.</li>
-    <li><strong>Best Dice Builds:</strong> For Hunt — faces that grant extra combat domains. For Preservation — faces that boost shield-related rewards.</li>
-    <li><strong>Hardest Boss:</strong> Argenti (Gold & Gears version) — massive AoE spam. Bring Preservation or Abundance sustain.</li>
-    <li><strong>Rewards:</strong> Stellar Jade, Dice materials, exclusive Light Cone (expansion pass).</li>
-  </ul>
-
-  <h3>Divergent Universe</h3>
-  <p>The latest (and current) expansion. Replaces Blessing tiers with <strong>Equations</strong> — pre-built blessing combos that activate when you collect a certain number of related Blessings.</p>
-  <ul>
-    <li><strong>Equations:</strong> Each Path has multiple Equations. Completing an Equation's requirement (e.g., "5 Hunt Blessings + 3 Nihility Blessings") unlocks powerful set bonuses. Plan your Blessing picks around 1-2 Equations.</li>
-    <li><strong>Weighted Curios:</strong> New Curios that scale in power based on rarity. Some have "weight" requirements (e.g., "Equip 3 Nihility Blessings" to activate).</li>
-    <li><strong>Best Strategies:</strong> Focus on 1 primary Path's Equation + 1 secondary Path's Equation. Don't spread picks thin.</li>
-    <li><strong>Hardest Boss:</strong> Varies by rotation. Check the current Divergent Universe buff schedule.</li>
-    <li><strong>Rewards:</strong> 8,000 weekly points max for Stellar Jade + Planar Ornament materials.</li>
-  </ul>
-
-  <h3>Expansion Modes Comparison</h3>
-  <table>
-    <tr><th>Mode</th><th>Key Feature</th><th>Difficulty</th><th>Weekly Cap</th></tr>
-    <tr><td>Base SU</td><td>Classic roguelike with 9 Paths</td><td>Low–Medium</td><td>10,000 pts</td></tr>
-    <tr><td>Swarm Disaster</td><td>Dual Paths + Communicator</td><td>Medium–High</td><td>One-time per difficulty</td></tr>
-    <tr><td>Gold &amp; Gears</td><td>Custom Dice + Wissen</td><td>Medium–High</td><td>One-time per difficulty</td></tr>
-    <tr><td>Divergent Universe</td><td>Equations + Weighted Curios</td><td>Medium</td><td>8,000 pts</td></tr>
-  </table>
-
-  <!-- ============ 7. TEAM BUILDING ============ -->
-  <h2 id="teams">7. Team Building for SU</h2>
-
-  <h3>General-Purpose Team (Any Path)</h3>
-  <p>A balanced composition that works with any Path and any expansion mode:</p>
-  <ul>
-    <li><strong>Main DPS</strong> — Your primary damage dealer (e.g., Jingliu, Seele, Dr. Ratio, Firefly).</li>
-    <li><strong>Sub-DPS / Support</strong> — Provides buffs, debuffs, or secondary damage. (e.g., Ruan Mei, Robin, Sunday, Tingyun, Sparkle).</li>
-    <li><strong>Sustain</strong> — Healer or shielder. (e.g., Aventurine, Luocha, Huohuo, Gallagher, Fu Xuan).</li>
-    <li><strong>Flex</strong> — Second support or sub-DPS depending on the Path. (e.g., Jiaoqiu for Nihility, Topaz for Elation).</li>
-  </ul>
-
-  <h3>Path-Specific Team Examples</h3>
-  <table>
-    <tr><th>Path</th><th>Example Team</th><th>Why It Works</th></tr>
-    <tr><td>Hunt</td><td>Feixiao + Robin + Aventurine + Topaz/March 7th (Hunt)</td><td>Hunt with FUA synergy. Robin buffs ATK/SPD. Aventurine provides shields + FUA. Topaz is a second FUA DPS.</td></tr>
-    <tr><td>Destruction</td><td>Firefly + Harmony TB + Ruan Mei + Gallagher</td><td>Firefly's HP consumption triggers Destruction Blessings instantly. Ruan Mei extends Weakness Break. Gallagher heals and breaks.</td></tr>
-    <tr><td>Nihility</td><td>Kafka + Black Swan + Ruan Mei + Huohuo</td><td>Kafka detonates, Black Swan stacks Arcana. Ruan Mei delays enemies. Huohuo provides energy + cleanse.</td></tr>
-    <tr><td>Erudition</td><td>The Herta + Jade + Sunday + Aventurine</td><td>The Herta and Jade AoE nuke everything. Sunday advances The Herta. Aventurine shields + FUA.</td></tr>
-    <tr><td>Preservation</td><td>Aventurine + Fu Xuan + Topaz + Robin</td><td>Double preservation for infinite shields. Topaz+Robin provide FUA damage scaling off survivability.</td></tr>
-    <tr><td>Abundance</td><td>Luocha + Huohuo + Blade + Bronya</td><td>Luocha field heals everything. Huohuo energy + cleanse. Blade benefits from Abundance's overheal-to-damage conversion.</td></tr>
-    <tr><td>Elation</td><td>Feixiao + Topaz + Robin + Aventurine</td><td>Four FUA characters. Every FUA is amplified by Elation Blessings. Extreme synergy.</td></tr>
-  </table>
-
-  <h3>Team Building Tips</h3>
-  <ul>
-    <li><strong>Don't over-invest in sustain in base SU.</strong> Bring one sustain (healer or shielder) and let Blessings handle the rest.</li>
-    <li><strong>In Swarm Disaster and high-diff Gold & Gears,</strong> dual sustain (healer + shielder) may be necessary until your Blessing collection is online.</li>
-    <li><strong>Harmony characters are universally strong.</strong> Ruan Mei, Robin, Sunday, and Sparkle work in almost any team.</li>
-    <li><strong>Weakness Break matching matters in SU.</strong> Bring elements that match the boss's weaknesses. The boss on floor 9 is fixed per SU cycle — plan ahead.</li>
-    <li><strong>SP management</strong> — If you're running Propagation or a Skill-heavy team, include a SP-positive support (Sparkle, Huohuo, or Tingyun).</li>
-  </ul>
-
-  <!-- ============ 8. WEEKLY REWARDS ============ -->
-  <h2 id="rewards">8. Weekly Reward Optimization</h2>
-
-  <h3>Base SU — Points Per Run</h3>
-  <table>
-    <tr><th>Difficulty</th><th>Points per Clear</th><th>Runs to Cap (10,000 pts)</th></tr>
-    <tr><td>World 1–3 (Low Diff)</td><td>~800–1,200</td><td>8–12</td></tr>
-    <tr><td>World 4–6 (Medium Diff)</td><td>~1,500–2,500</td><td>4–7</td></tr>
-    <tr><td>World 7+ &amp; High Diff</td><td>~3,000–4,500</td><td>2–4</td></tr>
-  </table>
-  <p>Cap is <strong>10,000 points per week</strong>. Higher difficulties give much more efficient points-per-run. Run the highest difficulty you can comfortably clear in 15–20 minutes.</p>
-
-  <h3>Divergent Universe — Weekly Cap</h3>
-  <p><strong>8,000 points per week</strong>. Same principle: run the highest difficulty available. Divergent Universe runs tend to be faster than base SU (~10–15 minutes) due to the Equation system.</p>
-
-  <h3>Optimization Strategy</h3>
-  <ul>
-    <li><strong>Day 1:</strong> Clear your highest base SU world once (~3,000–4,500 pts). Do 1 Divergent Universe run (~2,000–3,000 pts).</li>
-    <li><strong>Day 2:</strong> Another base SU run to cap or near-cap. Another DU run.</li>
-    <li><strong>Don't waste runs:</strong> If you're 2,000 points from cap and your run gives 4,000, you lose 2,000 points. Run lower difficulty to avoid overflow.</li>
-    <li><strong>One-time rewards:</strong> Swarm Disaster and Gold & Gears don't have a weekly cap — they reward once per difficulty clear. Prioritize these if you haven't cleared them. Each cleared difficulty gives Stellar Jade, often 200–300 per clear.</li>
-  </ul>
-
-  <h3>Reward Table — All Sources</h3>
-  <table>
-    <tr><th>Source</th><th>Stellar Jade</th><th>Materials</th><th>Frequency</th></tr>
-    <tr><td>SU Points (base)</td><td>~350</td><td>Relic remains, Credits, EXP</td><td>Weekly (10k cap)</td></tr>
-    <tr><td>DU Points</td><td>~200</td><td>Planar Ornament materials</td><td>Weekly (8k cap)</td></tr>
-    <tr><td>Swarm Disaster per diff</td><td>200–300</td><td>Self-Modeling Resin, LC mats</td><td>One-time</td></tr>
-    <tr><td>Gold & Gears per diff</td><td>200–300</td><td>Dice custom materials, LC mats</td><td>One-time</td></tr>
-    <tr><td>First clear rewards</td><td>Various</td><td>Standard pulls, LC pulls</td><td>One-time per world</td></tr>
-  </table>
-
-  <!-- ============ FOOTER ============ -->
-  <footer>
-    <p>SR Guide — Honkai: Star Rail community resource. Not affiliated with HoYoverse.</p>
-    <p style="font-size:0.8rem; margin-top:0.5rem;">All data based on game version 3.4. Guide updated June 15, 2026.</p>
-  </footer>
-
+<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:30px;text-align:center;">
+<p style="margin:0;">🎮 <strong>Amazon Affiliate:</strong> Level up your HSR grind with premium gaming gear from Amazon — fast-loading SSDs and ergonomic setups.</p>
 </div>
 
-<div class="amazon-affiliate" style="display:none;" aria-hidden="true">
-  Affiliate link placeholder - Amazon Associates
+<!-- ============================================================ -->
+<!-- SECTION 1 -->
+<!-- ============================================================ -->
+<section>
+<h2>🎯 Simulated Universe Overview</h2>
+<p>Simulated Universe (SU) is Honkai: Star Rail's permanent roguelike mode. Each run you choose a <strong>Path</strong> (determines your special Path Resonance ability and blessing pool), collect <strong>blessings</strong> (boosts), and fight escalating battles across multiple planes. SU is the primary source for <strong>Planar Ornaments</strong> (relics) and provides a significant portion of Stellar Jade income through first-time clears and weekly point rewards.</p>
+
+<h3>Key Systems (v3.4)</h3>
+<ul>
+  <li><strong>8 Paths:</strong> Remembrance, Erudition, Propagation, Elation, Nihility, Abundance, Preservation, Hunt</li>
+  <li><strong>Blessings:</strong> 3 tiers (1★, 2★, 3★) with resonance and interpath synergies</li>
+  <li><strong>Equations (Gold & Gears):</strong> Pre-built blessing combos that activate powerful effects</li>
+  <li><strong>Curios:</strong> Positive/negative artifacts that can dramatically change your run</li>
+  <li><strong>Expansion modes:</strong> Gold & Gears, Swarm Disaster, Uncharted Track (v3.4)</li>
+</ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: Path Guide -->
+<!-- ============================================================ -->
+<section>
+<h2>🛤️ Complete Path Guide v3.4</h2>
+
+<div class="path-card">
+<h3>❄️ Path of Remembrance — <span class="tier-s">SS Tier for v3.4</span></h3>
+<p>The Remembrance path centers on <strong>memosprite synergy and dissociation</strong>. With v3.4's memosprite meta, this path has become the strongest SU path for accounts with Castorice, Aglaea, or any memosprite DPS.</p>
+<p><strong>Best blessings:</strong> "Memoria Eternal" (3★ — dissociation on enemy turn start), "From Here to Eternity" (3★ — memosprite action advance), "Vanishing Dreams" (2★ — increased dissociation DMG)</p>
+<p><strong>Path Resonance:</strong> Deals Ice DMG and applies Dissociation. With 3★ blessings, triggers AOE dissociation chains.</p>
+<p><strong>Best teams:</strong> Castorice + Sunday, Aglaea + Robin, any memosprite team</p>
 </div>
+
+<div class="path-card">
+<h3>📚 Path of Erudition — <span class="tier-s">S Tier</span></h3>
+<p>Introduced alongside The Herta, the Erudition path focuses on <strong>Interpretation stacks and brain in a vat energy recovery</strong>. Each time an enemy takes DoT or is hit by a follow-up, you gain Interpretation stacks that boost all damage by up to 200% at max stacks.</p>
+<p><strong>Best blessings:</strong> "The Mind's Eye" (3★ — interpretation never resets), "Eureka Moment" (3★ — brain in a vat triggers on every third ultimate), "Knowledge Integration" (2★ — interpretation gained on FUA)</p>
+<p><strong>Path Resonance:</strong> Deals massive AOE Quantum DMG scaled by Interpretation stacks. Excellent for wave clearing.</p>
+<p><strong>Best teams:</strong> The Herta hypercarry, Jade + Herta duo, Argenti</p>
+</div>
+
+<div class="path-card">
+<h3>🦗 Path of Propagation — <span class="tier-s">S Tier</span></h3>
+<p>Propagation focuses on <strong>skill point generation and basic attack empowerment</strong>. It's the premier path for SP-hungry DPS characters and those with enhanced basic attacks.</p>
+<p><strong>Best blessings:</strong> "Sporogenesis" (3★ — unlimited skill points after ultimate), "Nourishing Growth" (2★ — basic attack deals enhanced damage), "Reproduction" (1★ — gain SP when entering battle)</p>
+<p><strong>Path Resonance:</strong> Consumes all remaining SP to deal Quantum DMG per point consumed. Can reach nuke-level damage with high SP generation.</p>
+<p><strong>Best teams:</strong> Dan Heng IL, Qingque, Seele, Jingliu (skill-heavy DPS)</p>
+</div>
+
+<div class="path-card">
+<h3>🎭 Path of Elation — <span class="tier-s">A Tier</span></h3>
+<p>Elation amplifies <strong>follow-up attacks</strong> with massive damage bonuses and additional hits. Very strong in the current Crystalline Storm era.</p>
+<p><strong>Best blessings:</strong> "Chorus of Many Voices" (3★ — FUA DMG bonus based on hit count), "Encore!" (2★ — chance to repeat FUA), "Backup Dancer" (1★ — FUA increases team SPD)</p>
+<p><strong>Path Resonance:</strong> Triggers additional FUA across all enemies whenever any ally performs a FUA. Creates cascading FUA chains.</p>
+<p><strong>Best teams:</strong> Feixiao FUA, Topaz + Numby, Clara + Yunli, Herta + Himeko</p>
+</div>
+
+<div class="path-card">
+<h3>🌑 Path of Nihility — <span class="tier-s">A Tier</span></h3>
+<p>Nihility focuses on <strong>DoT amplification, debuff extension, and enemy susceptibility</strong>. The premier path for Kafka, Black Swan, and all DoT specialists.</p>
+<p><strong>Best blessings:</strong> "The Suspiciousness of the Gourmet" (3★ — all DoTs immediately deal 120% of their damage when inflicted), "The Deathly Illness of the Patient" (2★ — DoT DMG +50%), "The Emptiness of the Blue" (1★ — extended DoT duration)</p>
+<p><strong>Path Resonance:</strong> Implants all DoT types on all enemies and instantly triggers them once each. Catastrophic burst damage in the right setup.</p>
+<p><strong>Best teams:</strong> Kafka + Black Swan, Guinaifen + Sampo, any DoT composition</p>
+</div>
+
+<div class="path-card">
+<h3>🌿 Path of Abundance — <span class="tier-s">A Tier</span></h3>
+<p>Abundance provides <strong>sustain, cleansing, and HP-scaling damage</strong>. Excellent for survival and for DPS units that scale with max HP.</p>
+<p><strong>Best blessings:</strong> "Anatta: The Supreme Source of All Things" (3★ — team-wide cleanse + massive heal), "The Cleansing of the Body" (2★ — Anatta triggers automatically on debuff), "Yearning for the Fragrance of Life" (1★ — HP drain converted to healing)</p>
+<p><strong>Path Resonance:</strong> Heals the entire team and deals damage equal to 30% of the total overhealed HP to all enemies. Scales with team max HP.</p>
+<p><strong>Best teams:</strong> Blade, Mydei, Fu Xuan (HP scaling), any team needing sustain</p>
+</div>
+
+<div class="path-card">
+<h3>🛡️ Path of Preservation — <span class="tier-s">B Tier</span></h3>
+<p>Preservation provides <strong>shielding, damage reduction, and shield-scaling damage</strong>. The safest path for consistent runs but slower clear times.</p>
+<p><strong>Best blessings:</strong> "Macrosegregation" (3★ — shield strength +100%), "Construction of the Human Body" (2★ — shield refreshes automatically), "Isomorphic Reaction" (1★ — gain shield on turn start)</p>
+<p><strong>Best teams:</strong> Aventurine hypercarry (damage scaling on DEF), Gepard shield teams</p>
+</div>
+
+<div class="path-card">
+<h3>🏹 Path of The Hunt — <span class="tier-s">B Tier</span></h3>
+<p>The Hunt provides <strong>SPD, action advance, and single-target damage amplification</strong>. Strong but focused on single-target scenarios — weaker in AoE-heavy rooms.</p>
+<p><strong>Best blessings:</strong> "The Killing Blade Turns to Ice" (3★ — killing an enemy action-advances all allies), "The Gash of the Bow" (2★ — SPD buff on kill), "The Quickening of the Bow" (1★ — SPD + turn advancement)</p>
+<p><strong>Best teams:</strong> Seele, Boothill, Feixiao in single-target boss rooms</p>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: Equation Building -->
+<!-- ============================================================ -->
+<section>
+<h2>🧩 Equation Building (Gold & Gears)</h2>
+<p>In Gold & Gears mode, <strong>Equations</strong> are pre-built blessing combinations that activate powerful additional effects when you collect all required blessings. Here are the top equations for v3.4:</p>
+
+<div class="equation-box">
+<strong>💎 "The All-Knowing" (Erudition, 3★ Equation):</strong> When an ally uses their Ultimate, all enemies take Quantum DMG equal to 150% of their Interpretation stacks. <strong>Best for:</strong> The Herta, Argenti, any frequent-ult DPS.
+</div>
+
+<div class="equation-box">
+<strong>💎 "The Eternal Theater" (Remembrance, 3★ Equation):</strong> Memosprites gain 60% action advance every time they attack. Dissociated enemies take 40% increased memosprite DMG. <strong>Best for:</strong> Castorice, Aglaea, Topaz + Numby.
+</div>
+
+<div class="equation-box">
+<strong>💎 "The Unending Performance" (Elation, 3★ Equation):</strong> Every 3 FUAs trigger a Resonance that hits all enemies. FUA CRIT DMG +100%. <strong>Best for:</strong> Feixiao FUA team, Clara, Yunli.
+</div>
+
+<div class="equation-box">
+<strong>💎 "The Infinite Loop" (Propagation + Nihility, Cross-path Equation):</strong> Using a Basic Attack consumes 1 SP to trigger all DoTs on the target. <strong>Best for:</strong> Kafka + Dan Heng IL hybrid teams.
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: Expansion Modes -->
+<!-- ============================================================ -->
+<section>
+<h2>🗺️ Expansion Mode Guides</h2>
+
+<h3>🥇 Gold & Gears</h3>
+<p>The flagship SU expansion featuring <strong>Equations, Dice rerolling, and the Retirement system</strong>. Key tips:</p>
+<ul>
+  <li><strong>Choose your path first:</strong> Remembrance and Erudition are the strongest for v3.4</li>
+  <li><strong>Prioritize 3★ equations:</strong> A single 3★ equation is worth more than three 1★ equations</li>
+  <li><strong>Dice management:</strong> Save your custom dice for the final two planes — the first plane can be cleared without optimal dice</li>
+  <li><strong>Retirement strategy:</strong> Retire early (after floor 8-10) when you have a strong equation set for maximum point efficiency</li>
+</ul>
+
+<h3>🦗 Swarm Disaster</h3>
+<p>The Propagation-themed expansion with the <strong>Communication and Communing</strong> mechanic. Key tips:</p>
+<ul>
+  <li><strong>Always take Propagation blessings:</strong> Even if your main path is different, Propagation 1★ blessings (SP generation) are universally useful</li>
+  <li><strong>Difficulty V clear:</strong> Use Remembrance with Castorice or Erudition with The Herta for the final boss</li>
+  <li><strong>Swarm boss:</strong> The True Sting boss summons Lesser Stings — use blast/AoE attacks to clear them quickly while damaging the main body</li>
+</ul>
+
+<h3>🆕 Uncharted Track (v3.4)</h3>
+<p>The newest expansion mode featuring <strong>randomized plane order, mystery events, and the Track system</strong>. Key tips:</p>
+<ul>
+  <li><strong>Track selection matters:</strong> Choose tracks that match your team's element weaknesses</li>
+  <li><strong>Mystery events:</strong> Always pick the mystery option in Curiosity rooms — the rewards (3★ blessings, rare curios) far outweigh the risks</li>
+  <li><strong>Boss tracks:</strong> Save your resonance charges for the boss track — the boss has 40% increased HP compared to Gold & Gears</li>
+</ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: Weekly Optimization -->
+<!-- ============================================================ -->
+<section>
+<h2>📅 Weekly Point Optimization</h2>
+<p>SU has a weekly point system that rewards up to <strong>13,000 points</strong> per week (previously 10,000). Here's the optimal route:</p>
+<ol>
+  <li><strong>First clear of the week:</strong> Run the highest-difficulty Uncharted Track you can clear. This gives the biggest point multiplier (2.5x).</li>
+  <li><strong>Second clear:</strong> Run Gold & Gears at difficulty IV+ for 2x point multiplier.</li>
+  <li><strong>Third+ clears:</strong> Speed-run Swarm Disaster at difficulty III with a strong FUA team — fastest clears per point ratio.</li>
+  <li><strong>Daily SU runs:</strong> Only necessary if you need Planar Ornament farming. Otherwise, 3 runs per week is sufficient for max points.</li>
+</ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: FAQ -->
+<!-- ============================================================ -->
+<section>
+<h2>❓ FAQ</h2>
+
+<div class="faq-item" style="margin:16px 0;">
+<div class="faq-q" style="font-weight:600;color:var(--accent);">Q1: Which path is best for Planar Ornament farming?</div>
+<div class="faq-a" style="color:var(--muted);"><p>For speed farming, use <strong>Elation with a FUA team</strong> (Feixiao + Topaz + Aventurine + Robin) — this clears the fastest. For consistent clearing with lower-geared accounts, use <strong>Remembrance</strong> (memosprite safety net) or <strong>Abundance</strong> (never-die sustain).</p></div>
+</div>
+
+<div class="faq-item" style="margin:16px 0;">
+<div class="faq-q" style="font-weight:600;color:var(--accent);">Q2: Does Uncharted Track replace Gold & Gears?</div>
+<div class="faq-a" style="color:var(--muted);"><p>No — Uncharted Track is an <strong>additional</strong> mode alongside Gold & Gears and Swarm Disaster. Each mode has separate first-clear Stellar Jade rewards and contributes to the weekly point total. You can and should play all three for maximum rewards.</p></div>
+</div>
+
+<div class="faq-item" style="margin:16px 0;">
+<div class="faq-q" style="font-weight:600;color:var(--accent);">Q3: What's the best use of Universal Enhancement items?</div>
+<div class="faq-a" style="color:var(--muted);"><p>Universal Enhancement items should be saved for <strong>3★ blessings of your chosen primary path</strong>. Never use them on 1★ blessings — the upgrade cost is the same but the power gain is much smaller. In Gold & Gears, also consider using them on key Equation pieces if you're one blessing away from completing a 3★ equation.</p></div>
+</div>
+
+<div class="faq-item" style="margin:16px 0;">
+<div class="faq-q" style="font-weight:600;color:var(--accent);">Q4: How do I unlock all ending bosses?</div>
+<div class="faq-a" style="color:var(--muted);"><p>Each expansion mode has different bosses based on your chosen path and progression level. In Gold & Gears, path-specific bosses unlock at Knowledge Level milestones. In Swarm Disaster, you unlock bosses by completing Communing tiers and defeating the Swarm Lord at increasing difficulties. The final boss of Uncharted Track is random but weighted toward bosses whose elements match your team's weaknesses (if you have multiple units sharing an element).</p></div>
+</div>
+</section>
+
+<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin:30px 0;text-align:center;">
+<p style="margin:0;">🛒 <strong>Amazon Affiliate:</strong> Optimize your HSR farming setup with our gear recommendations — from high-refresh monitors to low-latency input devices.</p>
+</div>
+
+</article>
+
+</main>
+
+<footer><div class="container"><p style="padding:24px 0;color:var(--muted);font-size:0.85rem;">&copy; 2026 HSR Guide. Data from community consensus. Not affiliated with HoYoverse. As an Amazon Associate I earn from qualifying purchases.</p></div></footer>
+<footer class="site-network" style="margin-top:1rem;padding:1.5rem;background:#1a1a2e;border-radius:8px;text-align:center">
+  <p style="color:#aaa;font-size:0.85rem;margin-bottom:0.8rem">🎮 攻略网络 — More Game Guides</p>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem">
+    <a href="https://chjiya.github.io/teyvat-guide/" style="color:#4fc3f7;text-decoration:none;padding:0.3rem 0.6rem;border:1px solid #333;border-radius:4px;font-size:0.8rem">原神 Genshin</a>
+    <a href="https://chjiya.github.io/hsr-guide/" style="color:#4fc3f7;text-decoration:none;padding:0.3rem 0.6rem;border:1px solid #333;border-radius:4px;font-size:0.8rem">星铁 HSR</a>
+    <a href="https://chjiya.github.io/zzz-guide/" style="color:#4fc3f7;text-decoration:none;padding:0.3rem 0.6rem;border:1px solid #333;border-radius:4px;font-size:0.8rem">绝区零 ZZZ</a>
+    <a href="https://chjiya.github.io/sr-guide-en/" style="color:#4fc3f7;text-decoration:none;padding:0.3rem 0.6rem;border:1px solid #333;border-radius:4px;font-size:0.8rem">HSR (EN)</a>
+    <a href="https://chjiya.github.io/enshin-guide-en/" style="color:#4fc3f7;text-decoration:none;padding:0.3rem 0.6rem;border:1px solid #333;border-radius:4px;font-size:0.8rem">Genshin (EN)</a>
+    <a href="https://chjiya.github.io/zzz-guide-en/" style="color:#4fc3f7;text-decoration:none;padding:0.3rem 0.6rem;border:1px solid #333;border-radius:4px;font-size:0.8rem">ZZZ (EN)</a>
+  </div>
+</footer>
 </body>
 </html>
